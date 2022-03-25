@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      data-require="bootstrap-css@3.3.6"
+      data-semver="3.3.6"
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css"
+    />
+    <script>
+      document.write('<base href="' + document.location + '" />');
+    </script>
+
+    <link rel="stylesheet" href="cropImage.css" />
+    <script
+      data-require="angular.js@1.4.x"
+      src="https://code.angularjs.org/1.4.9/angular.js"
+      data-semver="1.4.9"
+    ></script>
+    <script src="ui-bootstrap.min.js"></script>
+    <script src="ui-bootstrap-tpls.min.js"></script>
+
+    <script src="cropImage.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.rawgit.com/CrackerakiUA/ui-cropper/master/compile/minified/ui-cropper.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://rawgit.com/CrackerakiUA/ui-cropper/master/compile/unminified/ui-cropper.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <script type="text/ng-template" id="myModalContent.html">
+
+      <div class="modal-body">
+           <div>Select an image file: <input type="file" id="fileInput" /></div>
+
+           <!-- radio button -->
+           <div style="text-align: center;width:100%;">
+            <label class = "radio-inline"><input type="radio" name="optradio" ng-click="squareCropping()" checked><b>Crop Image</B></label>
+            <label class = "radio-inline"><input type="radio" name="optradio" ng-click="rectangleCropping()" ><b>Crop Signature</B></label>
+           </div>
+
+           <!-- Button -->
+         <div class="modal-footer">
+          <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+          <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+          </div>
+
+
+            <!-- Modal Start -->
+           <div class="main-container">
+            <div class="row">
+                <div class="column-1">
+                    <div class="grid-1">
+                      <div test-directive></div>
+                    </div>
+
+                    <div class="row-1">
+
+                            <div class="grid-2">
+                                <div><b><u>Cropped Image:</b></div>
+                                     <div ><img  ng-src="{{squareCroppedImage}}"   style="width:100%;" /></div>
+
+                            </div>
+
+                    </div>
+                </div>
+                <div class="column-1">
+                    <div class="row-2">
+
+                        <div class="grid-3">
+                            <div><b><u>Cropped Signature</b></div>
+                           <div><img id="sig" ng-src="{{rectCroppedImage}}" style="width:100%; display:none "  /></div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+    </script>
+    <a ng-init="open()"></a>
+  </body>
+</html>
